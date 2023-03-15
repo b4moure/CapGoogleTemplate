@@ -13,12 +13,15 @@ class ProfileForm(FlaskForm):
     lname = StringField('Last Name', validators=[DataRequired()]) 
     image = FileField("Image") 
     submit = SubmitField('Post')
+    role = SelectField('Role',choices=[("Teacher", "Teacher"), ("Student", "Student")])
+    status = SelectField('Status', choices=[("Unavailable", "Unavailable"), ("Available", "Available")])
 
 class BlogForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
     content = TextAreaField('Blog', validators=[DataRequired()])
     tag = StringField('Tag', validators=[DataRequired()])
     submit = SubmitField('Blog')
+    rate = SelectField('Rate', choices=[("1","1"), ("2", "2"), ("3", "3"), ("4", "4"), ("5", "5")])
 
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])

@@ -30,6 +30,13 @@
                 {% endfor %}
             </p>
             <p>
+                {{ form.rate.label }} <br>
+                {{ form.rate() }} <br>
+                {% for error in form.rate.errors %}
+                    <span style="color:red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
                 {{form.submit()}}
             </p>
         </form>

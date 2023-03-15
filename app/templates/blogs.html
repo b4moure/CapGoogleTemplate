@@ -35,6 +35,12 @@
                 {% endif %}
                 {{blog.subject}}
             </div>
+            <div class = "col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Rate</h3>
+                {% endif %}
+                {{blog.rate}}
+            </div>
         </div>
     {% endfor %}
 {% else %}

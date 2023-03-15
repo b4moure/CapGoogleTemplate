@@ -31,11 +31,26 @@ class User(UserMixin, Document):
     email = EmailField()
     image = FileField()
     prononuns = StringField()
+    role = StringField()
+    status = StringField()
 
     meta = {
         'ordering': ['lname','fname']
     }
-    
+
+class Jobi(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE)
+    jobi = StringField()
+    hours = IntField()
+    dateneeded = StringField()
+    location = StringField()
+    level = StringField()
+    description = StringField()
+    createdate = DateTimeField
+
+
+
+
 class Blog(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     subject = StringField()
@@ -43,6 +58,7 @@ class Blog(Document):
     tag = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
+    rate = StringField()
 
     meta = {
         'ordering': ['-createdate']
