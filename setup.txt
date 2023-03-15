@@ -100,6 +100,9 @@ TEST YOUR PROGRESS:
         (if you get an access error use --user after install)
 4) run main.py again.  Keep doing this until you don't get module errors. 
 
+### Open Street Maps ###
+Add your email address to the secrets.py file
+
 ### Run Main.py ###
 1) Click the main.py file
 2) Click the run triangle
