@@ -16,6 +16,15 @@ class ProfileForm(FlaskForm):
     role = SelectField('Role',choices=[("Teacher", "Teacher"), ("Student", "Student")])
     status = SelectField('Status', choices=[("Unavailable", "Unavailable"), ("Available", "Available")])
 
+class jobiForm(FlaskForm):
+    jobi = StringField("", validators=[DataRequired()])
+    hours = IntegerField()
+    dateneeded = StringField("", validators=[DataRequired()])
+    location = StringField("", validators=[DataRequired()])
+    level = StringField("", validators=[DataRequired()])
+    description = StringField("", validators=[DataRequired()])
+    post = SubmitField('Post')
+
 class BlogForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
     content = TextAreaField('Blog', validators=[DataRequired()])

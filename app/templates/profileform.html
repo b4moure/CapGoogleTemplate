@@ -16,7 +16,7 @@
         <p>
             {{ form.role.label }} <br>
             {{ form.role() }} <br>
-            {% for error in form.role.errors}
+            {% for error in form.role.errors%}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
@@ -30,9 +30,9 @@
         <p>
             {{ form.status.label }} <br>
             {{ form.status() }} <br>
-            { % for error in form.status.errors % }
-            <span style="color : red;">[{{error}}] </span>
-            { % endfor % }
+            {% for error in form.status.errors %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
         </p>
 
         <p>

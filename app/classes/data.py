@@ -46,9 +46,11 @@ class Jobi(Document):
     location = StringField()
     level = StringField()
     description = StringField()
-    createdate = DateTimeField
-
-
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+    meta = {
+        'ordering' : ['-createdate']
+    }
 
 
 class Blog(Document):
