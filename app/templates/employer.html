@@ -3,7 +3,64 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div>
-    <h1>Welcome, Employer</h1>
+<div class="row" style="background-color: rgb(214, 209, 218);">
+    <!--Main text and image.-->
+    <h1 class="text-center">Need a hand?</h1>
+    <h2 class="text-center">You've come to the right place.</h2>
+    <!--Sign in/Sign up buttons.-->
+    <div class="d-grid gap-6 d-md-block text-center">
+        <a href="emp_signin">
+            <button type="button" class="btn btn-outline-dark">Sign In</button>
+        </a>
+        <a href="emp_signup">
+            <button type="button" class="btn btn-outline-dark">Sign Up</button>
+        </a>
+        <!--Cute bunny picture-->
+        <div class="text-center">
+            <img src="static/bunnyboss.png" class="text-center" alt="">
+        </div>
+        <!--Information on being an Employer-->
+        <div class="text-center">
+            <p>If you want to become an employer, you need to know...</p>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              this.
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content" style="background-color: rgb(140, 129, 150);">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel"8>Be nice.</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque officiis voluptatum sapiente inventore? Tempora repellat inventore molestiae corrupti animi, perspiciatis quos exercitationem, reiciendis ad nobis esse, provident deserunt eaque omnis.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Understood</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <!--FAQ Page-->
+    <h3>.</h3>
+    <h3 class="text-center">FAQ</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis commodi quia, at vitae corporis nisi voluptates voluptate temporibus, explicabo sit, eveniet excepturi mollitia minima autem soluta accusamus quas aspernatur quaerat?</p>
+    <br>
+    <h3>1</h3>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus mollitia nam doloribus quae molestiae assumenda et fugiat rem vitae cum veniam quod iure corrupti voluptas, deleniti ut! Alias, quis exercitationem?</p>
+    <br>
+    <h3>2</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum sequi sunt nulla numquam nihil corrupti officiis, excepturi iusto libero consectetur eos rem repellat. Eum praesentium ipsa iusto labore ut doloribus.</p>
+    <br>
+    <h3>3</h3>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam officia mollitia id tempore? Porro aliquid et laborum. Voluptate eligendi repudiandae dolores quisquam, accusamus dolor dicta, nesciunt hic illo in adipisci.</p>
+    <h3>4</h3>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde quo enim accusamus at! Aliquid, sed? Adipisci aliquid iure sint labore ipsum est, tempora suscipit quia, deserunt et voluptatem assumenda sed.</p>
 </div>
 {% endblock %}

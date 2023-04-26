@@ -17,13 +17,13 @@ class ProfileForm(FlaskForm):
     status = SelectField('Status', choices=[("Unavailable", "Unavailable"), ("Available", "Available")])
 
 class jobiForm(FlaskForm):
-    jobi = StringField("", validators=[DataRequired()])
+    jobi = StringField("Jobi:", validators=[DataRequired()])
     hours = IntegerField()
-    dateneeded = StringField("", validators=[DataRequired()])
-    location = StringField("", validators=[DataRequired()])
-    level = StringField("", validators=[DataRequired()])
-    description = StringField("", validators=[DataRequired()])
-    post = SubmitField('Post')
+    dateneeded = StringField("Date Needed:", validators=[DataRequired()])
+    location = StringField("Location:", validators=[DataRequired()])
+    level = StringField("Level:", validators=[DataRequired()])
+    description = StringField("Description:", validators=[DataRequired()])
+    submit = SubmitField('Post')
 
 class BlogForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])

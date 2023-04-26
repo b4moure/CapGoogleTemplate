@@ -16,15 +16,54 @@ copy this one and then edit it. -->
 
         <form method=post>
             {{ form.hidden_tag() }}
+            <p>
+                {{ form.jobi.label }} <br>
+                {{ form.jobi(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.jobi.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.hours.label }} <br>
+                {{ form.hours(cols=64, rows=10) }}
+                <!--List the errors for this field-->
+                {% for error in form.hours.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
             
-            {{ form.field.label }} <br>
-            {{ form.field(size=64) }}
-            <!--List the errors for this field-->
-            {% for error in form.field.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-
-            {{form.submit()}}
+            <p>
+                {{ form.dateneeded.label }} <br>
+                {{ form.dateneeded() }} <br>
+                {% for error in form.dateneeded.errors %}
+                    <span style="color:red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.location.label }} <br>
+                {{ form.location() }} <br>
+                {% for error in form.location.errors %}
+                    <span style="color:red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.level.label }} <br>
+                {{ form.level() }} <br>
+                {% for error in form.level.errors %}
+                    <span style="color:red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.description.label }} <br>
+                {{ form.description() }} <br>
+                {% for error in form.description.errors %}
+                    <span style="color:red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{form.submit()}}
+            </p>
         </form>
-        
+
 {% endblock %}

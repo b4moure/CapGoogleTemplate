@@ -3,10 +3,67 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<div class="row">
+    <div class="col-4">
+        <h1 class="display-1">All Jobis</h1>
+    </div>
+    <div class="col">
+        <a href="/jobi/new" class="btn btn-primary btn-sm mt-5" role="button">New Jobi</a>
+    </div>
+</div>
 {% if jobis %}
     {% for jobi in jobis %}
-        {{jobi.jobi}}, 
+    <div class="row border-bottom">
+        <div class = "col-2">
+            {% if loop.index == 1 %}
+            <h3 class="display-8">Jobi</h3>
+            {% endif %}
 
+            <a href="/jobi/{{jobi.id}}">
+                {{jobi.jobi}}
+            </a>
+        </div>
+        <div class = "col-1">
+            {% if loop.index == 1 %}
+            <h3 class="display-8">Hours needed</h3>
+            {% endif %}
+            {{jobi.hours}}
+        </div>
+        <div class = "col-1">
+            {% if loop.index == 1 %}
+            <h3 class="display-8">Date needed</h3>
+            {% endif %}
+            {{jobi.dateneeded}}
+        </div>
+        <div class = "col-2">
+            {% if loop.index == 1 %}
+            <h3 class="display-8">Location</h3>
+            {% endif %}
+            {{jobi.location}}
+        </div>
+        <div class = "col-1">
+            {% if loop.index == 1 %}
+            <h3 class="display-8">Difficulty Level</h3>
+            {% endif %}
+            {{jobi.level}}
+        </div>
+        <div class = "col-2 ms-5">
+            {% if loop.index == 1 %}
+            <h3 class="display-8">Description</h3>
+            {% endif %}
+            {{jobi.description}}
+        </div>
+        <div class="col-2">
+            {% if loop.index == 1 %}
+            <h3 class="display-8">Time posted</h3>
+            {% endif %}
+
+            <a href="">
+                {{moment(jobi.modify_date).calendar()}}
+            </a>
+
+        </div>
+    </div>
     {% endfor %}
 {% endif %}
 

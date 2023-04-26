@@ -11,6 +11,16 @@ from app.classes.forms import jobiForm, CommentForm
 from flask_login import login_required
 import datetime as dt
 
+@app.route('/employer')
+def employer():
+    return render_template('employer.html')
+@app.route('/emp_signin')
+def signin():
+    return render_template('emp_signin.html')
+@app.route('/emp_signup')
+def signup():
+    return render_template('emp_signup.html')
+
 # This is the route to list all blogs
 @app.route('/jobi/list')
 @app.route('/jobis')
@@ -41,9 +51,10 @@ def jobi(jobiID):
     # there is a field on the comment collection called 'blog' that is a reference the Blog
     # document it is related to.  You can use the blogID to get the blog and then you can use
     # the blog object (thisBlog in this case) to get all the comments.
-    theseComments = Comment.objects(jobi=thisJobi)
+   # theseComments = Comment.objects(jobi=thisJobi)
     # Send the blog object and the comments object to the 'blog.html' template.
-    return render_template('jobiform.html',jobi=thisJobi,comments=theseComments)
+    #return render_template('jobi.html',jobi=thisJobi,comments=theseComments)
+    return render_template('jobi.html',jobi=thisJobi)
 
 # This route will delete a specific blog.  You can only delete the blog if you are the author.
 # <blogID> is a variable sent to this route by the user who clicked on the trash can in the 
@@ -95,9 +106,12 @@ def jobiNew():
         newJobi = Jobi(
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
-            subject = form.subject.data,
-            content = form.content.data,
-            tag = form.tag.data,
+            jobi = form.jobi.data,
+            hours = form.hours.data,
+            dateneeded = form.dateneeded.data,
+            location = form.location.data,
+            level = form.level.data,
+            description = form.description.data,
             author = current_user.id,
             # This sets the modifydate to the current datetime.
             modify_date = dt.datetime.utcnow
@@ -140,10 +154,12 @@ def jobiEdit(jobiID):
     if form.validate_on_submit():
         # update() is mongoengine method for updating an existing document with new data.
         editJobi.update(
-            subject = form.subject.data,
-            content = form.content.data,
-            tag = form.tag.data,
-            rate = form.rate.data, 
+            jobi = form.jobi.data,
+            hours = form.hours.data,
+            dateneeded = form.dateneeded.data,
+            location = form.location.data,
+            level = form.level.data,
+            description = form.description.data,
             modify_date = dt.datetime.utcnow
         )
         # After updating the document, send the user to the updated blog using a redirect.
@@ -151,10 +167,12 @@ def jobiEdit(jobiID):
 
     # if the form has NOT been submitted then take the data from the editBlog object
     # and place it in the form object so it will be displayed to the user on the template.
-    form.subject.data = editJobi.subject
-    form.content.data = editJobi.content
-    form.tag.data = editJobi.tag
-    form.rate.data = editJobi.rate
+    form.jobi.data = editJobi.jobi
+    form.hours.data = editJobi.hours
+    form.dateneeded.data = editJobi.dateneeded
+    form.location.data = editJobi.location
+    form.level.data = editJobi.level
+    form.description.data = editJobi.description
 
 
     # Send the user to the blog form that is now filled out with the current information
@@ -169,45 +187,45 @@ def jobiEdit(jobiID):
 # about how comments are related to blogs.  Additionally, take a look at data.py to see how the
 # relationship is defined in the Blog and the Comment collections.
 
-@app.route('/comment/new/<jobiID>', methods=['GET', 'POST'])
-@login_required
-def commentNew(jobiID):
-    jobi = jobi.objects.get(id=jobiID)
-    form = CommentForm()
-    if form.validate_on_submit():
-        newComment = Comment(
-            author = current_user.id,
-            jobi = jobiID,
-            content = form.content.data
-        )
-        newComment.save()
-        return redirect(url_for('jobi',jobiID=jobiID))
-    return render_template('commentform.html',form=form,jobi=jobi)
+#@app.route('/comment/new/<jobiID>', methods=['GET', 'POST'])
+#@login_required
+#def commentNew(jobiID):
+#    jobi = jobi.objects.get(id=jobiID)
+#    form = CommentForm()
+#    if form.validate_on_submit():
+#        newComment = Comment(
+#            author = current_user.id,
+#            jobi = jobiID,
+#            content = form.content.data
+#        )
+#        newComment.save()
+#        return redirect(url_for('jobi',jobiID=jobiID))
+#    return render_template('commentform.html',form=form,jobi=jobi)
+#
+#@app.route('/comment/edit/<commentID>', methods=['GET', 'POST'])
+#@login_required
+#def commentEdit(commentID):
+#    editComment = Comment.objects.get(id=commentID)
+#    if current_user != editComment.author:
+#        flash("You can't edit a comment you didn't write.")
+#        return redirect(url_for('jobi',jobiID=editComment.jobi.id))
+#    jobi = jobi.objects.get(id=editComment.jobi.id)
+#    form = CommentForm()
+#    if form.validate_on_submit():
+#        editComment.update(
+#            content = form.content.data,
+#            modifydate = dt.datetime.utcnow
+#        )
+#        return redirect(url_for('jobi',jobiID=editComment.jobi.id))
+#
+#    form.content.data = editComment.content
+#
+#    return render_template('commentform.html',form=form,jobi=jobi)   
 
-@app.route('/comment/edit/<commentID>', methods=['GET', 'POST'])
-@login_required
-def commentEdit(commentID):
-    editComment = Comment.objects.get(id=commentID)
-    if current_user != editComment.author:
-        flash("You can't edit a comment you didn't write.")
-        return redirect(url_for('jobi',jobiID=editComment.jobi.id))
-    jobi = jobi.objects.get(id=editComment.jobi.id)
-    form = CommentForm()
-    if form.validate_on_submit():
-        editComment.update(
-            content = form.content.data,
-            modifydate = dt.datetime.utcnow
-        )
-        return redirect(url_for('jobi',jobiID=editComment.jobi.id))
-
-    form.content.data = editComment.content
-
-    return render_template('commentform.html',form=form,jobi=jobi)   
-
-@app.route('/comment/delete/<commentID>')
-@login_required
-def commentDelete(commentID): 
-    deleteComment = Comment.objects.get(id=commentID)
-    deleteComment.delete()
-    flash('The comments was deleted.')
-    return redirect(url_for('jobi',jobiID=deleteComment.jobi.id)) 
+#@app.route('/comment/delete/<commentID>')
+#@login_required
+#def commentDelete(commentID): 
+#    deleteComment = Comment.objects.get(id=commentID)
+#    deleteComment.delete()
+#    flash('The comments was deleted.')
+#    return redirect(url_for('jobi',jobiID=deleteComment.jobi.id)) 
