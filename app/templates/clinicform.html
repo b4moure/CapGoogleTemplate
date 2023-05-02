@@ -2,8 +2,8 @@
 
 {% block body %}
 
-    <h1>Input New Clinic</h1>
-        <h4>If your clinic is not already in our database, add your clinic's info here for it to show up!</h4>
+    <h1 style="color:rgb(78, 49, 91)">Input New Location</h1>
+        <h4 style="color:rgb(78, 49, 91)">If your jobi is not already in our database, add your jobi's location here for it to show up!</h4>
         <!--List all errors in a group at the top-->
         {% for field in form.errors %}
             {% for error in form.errors[field] %}
@@ -12,7 +12,7 @@
                 </div>
             {% endfor %}
         {% endfor %}
-    <form method="post">
+    <form method="post" style="color:rgb(78, 49, 91)">
         {{ form.hidden_tag() }}
         <p>
             {{ form.name.label }}<br>

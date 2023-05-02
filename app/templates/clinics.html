@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="row">
+<div class="row" style="color:rgb(78, 49, 91)">
     <div class="col-4">
-        <h1 class="display-1">All Clinics</h1>
+        <h1 class="display-1">All Jobi Locations</h1>
     </div>
     <div class="col">
-        <a href="/clinic/new" class="btn btn-primary btn-sm mt-5" role="button">New Clinic</a>
+        <a href="/clinic/new" class="btn btn-primary btn-sm mt-5" role="button">New jobi location</a>
     </div>
 </div>
 
 {% if clinics %}
     {% for clinic in clinics %}
-        <div class="row border">
+        <div class="row border" style="color:rgb(78, 49, 91)">
             <div class="col-1 border">
                 {% if loop.index == 1 %}
                 <h3 class="display-0.5"></h3>
