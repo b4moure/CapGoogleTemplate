@@ -1,33 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-light" style= "background-color:#A79AAF;">
+<nav class="navbar navbar-expand-lg navbar-light" style= "background-color:#f2eaf8;">
   <div class="container-fluid mb-3">
     <a class="navbar-brand" href="#">
       <img src="static/turtle.jpg" alt="" width="40" height="40">
     </a>
-    <a class="navbar-brand .navbar-text display-1 font-weight-bold" href="/">Home</a>
+    <a class="navbar-brand .navbar-text display-1 font-weight-bold" href="/" style="color:rgb(78, 49, 91)">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 display-7" style="margin: 0% 37%;"> 
         <li class="nav-item">
-          <a class="nav-link" href="/blogs">Blogs</a>
+          <a class="nav-link" href="/blogs" style="color:rgb(78, 49, 91)">Blogs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/jobis">Jobis</a>
+          <a class="nav-link" href="/jobis" style="color:rgb(78, 49, 91)">Jobis</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Clinics
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:rgb(78, 49, 91)">
+            Locations
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/clinic/map">Map</a></li>
-            <li><a class="dropdown-item" href="/clinic/list">List</a></li>
+            <li><a class="dropdown-item" href="/clinic/map" style="color:rgb(78, 49, 91)">Map</a></li>
+            <li><a class="dropdown-item" href="/clinic/list" style="color:rgb(78, 49, 91)">List</a></li>
           </ul>
         <li class="nav-item">
-          <a class="nav-link" href="/aboutus">About Us</a>
+          <a class="nav-link" href="/aboutus" style="color:rgb(78, 49, 91)">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/employer">Employer</a>
+          <a class="nav-link" href="/employer" style="color:rgb(78, 49, 91)">Employer</a>
         </li>
         <li>
       </li> 
@@ -35,18 +35,18 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         {% if current_user.is_anonymous %}
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+            <a class="nav-link" href="{{ url_for('login') }}" style="color:rgb(78, 49, 91)">Login</a>
 
           </li>
         {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="/myprofile">
+            <a class="nav-link" href="/myprofile" style="color:rgb(78, 49, 91)">
               {{ current_user.gname }} 
             </a>
             
           </li>          
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            <a class="nav-link" href="{{ url_for('logout') }}" style="color:rgb(78, 49, 91)">Logout</a>
           </li>
           {% endif %}
         </li>
